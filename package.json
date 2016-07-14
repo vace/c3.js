@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vace/c3.git"
+    "url": "git+https://github.com/vace/c3.js.git"
   },
   "keywords": [
     "css",
@@ -19,7 +19,7 @@
   "author": "vace",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vace/c3/issues"
+    "url": "https://github.com/vace/c3.js/issues"
   },
-  "homepage": "https://github.com/vace/c3#readme"
+  "homepage": "https://github.com/vace/c3.js#readme"
 }
