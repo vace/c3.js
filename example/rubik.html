@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<!--author:Vace_Vlm(ocdo@qq.com),create:2016年7月12日 上午9:47-->
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-title" content="vace"/>
+    <meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>title</title>
+    <link rel="stylesheet" href="example.css">
+</head>
+<body>
+	<div class="c3-view"></div>
+    <link href="//cdn.bootcss.com/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" rel="stylesheet">
+    <a class="github-fork-ribbon fixed" href="https://github.com/vace/c3.js" title="Fork me on GitHub">Fork me on GitHub</a>
+    <a class="github-fork-ribbon fixed right-bottom" href="https://git.coding.net/vace/c3.js.git" title="Fork me on Coding">Fork me on Coding</a>
+
+    <script src="c3.min.js"></script>
+    <script>
+        var rnd = c3.rndInt
+
+        // window.addEventListener
+        var stage = new c3.Stage(window.innerWidth,window.innerHeight)
+        stage.attach('.c3-view')
+
+        var group = new c3.Sprite()
+        stage.addChild(group)
+
+        /*
+          /_/_/_/|
+         /_/_/_/|/|
+        /_/_/_/|/|/|
+       |_|_|_|/|/|/
+       |_|_|_|/|/
+       |_|_|_|/
+       9 + 9 + 9
+       -->x
+        */
+        var material = new c3.Material({
+            color:'rgba(128, 0, 128, 0.63)'
+        })
+        var i,j,cube,x,y,z
+        for(y = -1; y <2; y++){
+            for(x = -1; x <2 ;x ++){
+                for(z = -1;z < 2;z ++){
+                    cube = new c3.Cube(120,120,120)
+                    cube.position(60 * x,60 * y,60 * z).update()
+                    cube.material = material
+                    group.addChild(cube)
+                }
+            }
+        }
+
+        
+
+        function update(){
+            if(auto){
+                group.rotate('+1','+0.2','+0.2').update()
+            }
+            angleX += (curMouseX - lastMouseX + lastAngleX - angleX) * 0.3;
+            angleY += (curMouseY - lastMouseY + lastAngleY - angleY) * 0.3;
+            angleY = Math.max(-60, Math.min(60, angleY));
+            // stage.camera.rotate(,'+0.5',0).update()
+            stage.camera.rotate(-angleY, angleX, 0).update();
+            requestAnimationFrame(update)
+        }
+
+        update()
+
+
+
+
+    var lastMouseX = 0;
+    var lastMouseY = 0;
+    var curMouseX = 0;
+    var curMouseY = 0;
+    var lastAngleX = 0;
+    var lastAngleY = 0;
+    var angleX = 0;
+    var angleY = 0;
+    var auto = true
+
+    document.addEventListener("mousedown", mouseDownHandler);
+
+    document.addEventListener("mouseup", mouseUpHandler);
+
+    function mouseDownHandler(evt) {
+        lastMouseX = evt.pageX;
+        lastMouseY = evt.pageY;
+        lastAngleX = angleX;
+        lastAngleY = angleY;
+        curMouseX = evt.pageX;
+        curMouseY = evt.pageY;
+        auto = false
+        document.addEventListener("mousemove", mouseMoveHandler);
+    }
+
+    function mouseMoveHandler(evt) {
+        curMouseX = evt.pageX;
+        curMouseY = evt.pageY;
+    }
+
+    function mouseUpHandler(evt) {
+        curMouseX = evt.pageX;
+        curMouseY = evt.pageY;
+        
+        document.removeEventListener("mousemove", mouseMoveHandler);
+    }
+    </script>
+</body>
+</html>

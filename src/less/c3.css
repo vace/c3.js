@@ -1,0 +1,31 @@
+.c3-stage {
+  -webkit-perspective: 800px;
+          perspective: 800px;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.c3-stage,
+.c3-stage .c3-camera,
+.c3-stage .c3-sprite,
+.c3-stage .c3-plane,
+.c3-stage .c3-cube,
+.c3-stage .c3-cylinder,
+.c3-stage .c3-triangle {
+  position: absolute;
+  -webkit-transform-origin: 50% 50% 0px;
+          transform-origin: 50% 50% 0px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.c3-stage .c3-camera {
+  top: 50%;
+  left: 50%;
+  will-change: transform;
+}
+.c3-stage .c3-plane {
+  background-color: purple;
+  border: 1px solid #000;
+  opacity: 0.7;
+}
+/*# sourceMappingURL=c3.css.map */

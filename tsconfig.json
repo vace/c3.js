@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "noImplicitAny": false,
+        "outDir": "dist",
+        "rootDir": "src",
+        "sourceMap": false,
+        "outFile":"dist/c3-unpack.js"
+    },
+    
+    "exclude": [
+        "node_modules"
+    ]
+}

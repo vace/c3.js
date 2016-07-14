@@ -1,0 +1,31 @@
+.c3-stage{
+	perspective: 800px;
+	top: 0px;
+	left: 0px;
+	overflow: hidden;
+
+	&,
+	.c3-camera,
+	.c3-sprite,
+	.c3-plane,
+	.c3-cube,
+	.c3-cylinder,
+	.c3-triangle{
+    	position: absolute;
+	    transform-origin: 50% 50% 0px;
+	    transform-style: preserve-3d;
+	}
+    .c3-camera{
+	    top: 50%;
+	    left: 50%;
+	    will-change: transform;
+    }
+
+
+    // debug css
+    .c3-plane{
+    	background-color: purple;
+    	border: 1px solid #000;
+    	opacity:0.7;
+    }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "c3.js",
+  "version": "1.0.0",
+  "description": "a lightweight and fast 3d css library.md,just 20KB, gzip:6.4 KB!!!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"tsc && node bin/output.js && uglify -s dist/c3.js -o dist/c3.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vace/c3.git"
+  },
+  "keywords": [
+    "css",
+    "3d"
+  ],
+  "maib":"dist/c3.js",
+  "author": "vace",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vace/c3/issues"
+  },
+  "homepage": "https://github.com/vace/c3#readme"
+}

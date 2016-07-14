@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<!--author:Vace_Vlm(ocdo@qq.com),create:2016年7月12日 上午9:47-->
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-title" content="vace"/>
+    <meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>title</title>
+    <link rel="stylesheet" href="example.css">
+</head>
+<body>
+	<div class="c3-view"></div>
+    <link href="//cdn.bootcss.com/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" rel="stylesheet">
+    <a class="github-fork-ribbon fixed" href="https://github.com/vace/c3.js" title="Fork me on GitHub">Fork me on GitHub</a>
+    <a class="github-fork-ribbon fixed right-bottom" href="https://git.coding.net/vace/c3.js.git" title="Fork me on Coding">Fork me on Coding</a>
+
+    <script src="c3.min.js"></script>
+    <script>
+        var rnd = c3.rndInt
+
+        // window.addEventListener
+        var stage = new c3.Stage(window.innerWidth,window.innerHeight)
+        stage.attach('.c3-view')
+
+        var group = new c3.Sprite()
+        stage.addChild(group)
+
+        // 创建20个平面
+        for (var i = 0; i < 20; i++) {
+            // 新增面
+            var plane = new c3.Plane(100,100)
+            // 新增材质
+            var material = new c3.Material({
+                color:c3.rndColor(),
+                opacity:c3.rnd(0,1)
+            })
+            // 设置属性
+            plane.translate(rnd(-250,250),rnd(-250,250),rnd(-250,250))
+                 .rotate(rnd(0,360),rnd(0,360),rnd(0,360))
+                 .update()
+            // 添加材质
+            plane.material = material
+            // 展示元素
+            group.addChild(plane)
+            // 绑定事件
+            plane.on('mouseover',function(){
+                this.scale(1.2,1.2,1.2).update()
+            }).on('mouseout',function(){
+                this.scale(1,1,1).update()
+            })
+        }
+
+
+        var cube_material = new c3.Material({
+            color:c3.rndColor(),
+            opacity:c3.rnd(0,1),
+            image:'url(images/main.png)',
+            size:'100% 100%'
+        })
+        // 创建四个立方体
+        for (var i = 0; i < 4; i++) {
+            var cube = new c3.Cube(rnd(100,250),rnd(100,250),rnd(100,250))
+            cube.translate(rnd(-150,150),rnd(-150,150),rnd(-150,150))
+                 .rotate(rnd(0,360),rnd(0,360),rnd(0,360))
+                 .update()
+           cube.material = cube_material
+           group.addChild(cube)
+
+           cube.on('mouseover',function(){
+               this.scale(1.2,1.2,1.2).update()
+           }).on('mouseout',function(){
+               this.scale(1,1,1).update()
+           })  
+        }
+
+
+        function update(){
+            stage.camera.rotate(0,'+0.5',0).update()
+            requestAnimationFrame(update)
+        }
+
+        update()
+    </script>
+</body>
+</html>
