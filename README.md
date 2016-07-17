@@ -14,6 +14,11 @@
 - [魔方](https://vace.me/a/c3js/rubik.html)
 - [带贴图的魔方](https://vace.me/a/c3js/superrubik.html)
 
+## 安装 
+
+1. 安装`typescript`: `npm install -g tsc`
+2. 安装`uglify` : `npm install -g uglify`
+3. 编译`npm run build`
 
 ## 使用
 
